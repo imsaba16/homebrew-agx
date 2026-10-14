@@ -1,23 +1,28 @@
 class Agx < Formula
   desc "Context exchange, session diffing, search, and backup engine for Google Antigravity"
   homepage "https://github.com/imsaba16/agx"
-  version "1.0.0-rc.2"
+  version "1.0.0-rc.3"
   license "Apache-2.0"
 
   on_macos do
-    if Hardware::CPU.arm?
+    on_arm do
       url "https://github.com/imsaba16/agx/releases/download/v#{version}/agx-macos-arm64.tar.gz"
-      sha256 "60673b577386f8860c27db7bddb5fa9f51dfeb4e8a432854414807d987fda21a"
-    else
+      sha256 "17739aa45916560a7a6c62aa153274500946d02d2d227d007d6d8ebce7e01559"
+    end
+    on_intel do
       url "https://github.com/imsaba16/agx/releases/download/v#{version}/agx-macos-x86_64.tar.gz"
-      sha256 "2d65c85fb334c528b4caa3cc270426a815c6cad15eb12709095d16247a66b312"
+      sha256 "7fad8ae311c179a1cfba74ec82bfe2733f3e1d7ac888dd403a6b50df0a7185d7"
     end
   end
 
   on_linux do
-    if Hardware::CPU.intel?
+    on_intel do
       url "https://github.com/imsaba16/agx/releases/download/v#{version}/agx-linux-x86_64.tar.gz"
-      sha256 "a7ff7eb642867fef2f52e879bb6e6843c6f8e623129a0fead8cc2c7ece899b6a"
+      sha256 "e2379dd5536b44d9397d8f206095b20310cf4d49c288b713dd3048ef1b4b8d1e"
+    end
+    on_arm do
+      url "https://github.com/imsaba16/agx/releases/download/v#{version}/agx-linux-arm64.tar.gz"
+      sha256 "2247ed1d4ee9a57ef0e48938993deb9ccacab057faa99e2e8060682de98b23a0"
     end
   end
 
